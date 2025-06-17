@@ -1,5 +1,5 @@
 
-
+#!/bin/bash
 # Get current project directory
 PROJECT_DIR="$(pwd)"
 
