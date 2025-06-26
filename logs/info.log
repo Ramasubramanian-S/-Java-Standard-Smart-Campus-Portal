@@ -1,0 +1,15 @@
+2025-06-26 15:59:24 [INFO] LoggerTest - 📘 This is an INFO log
+2025-06-26 15:59:24 [WARN] LoggerTest - ⚠️ This is a WARNING log
+2025-06-26 15:59:24 [ERROR] LoggerTest - ❌ This is an ERROR log
+2025-06-26 16:04:47 [INFO] LoggerTest -  This is an INFO log
+2025-06-26 16:04:47 [WARN] LoggerTest -  This is a WARNING log
+2025-06-26 16:04:47 [ERROR] LoggerTest -  This is an ERROR log
+2025-06-26 16:05:35 [INFO] LoggerTest -  This is an INFO log
+2025-06-26 16:05:35 [WARN] LoggerTest -  This is a WARNING log
+2025-06-26 16:05:35 [ERROR] LoggerTest -  This is an ERROR log
+2025-06-26 16:13:17 [INFO] LoggerTest -  This is an INFO log
+2025-06-26 16:13:17 [WARN] LoggerTest -  This is a WARNING log
+2025-06-26 16:13:17 [ERROR] LoggerTest -  This is an ERROR log
+2025-06-26 19:57:32 [INFO] LoggerTest -  This is an INFO log
+2025-06-26 19:57:32 [WARN] LoggerTest -  This is a WARNING log
+2025-06-26 19:57:32 [ERROR] LoggerTest -  This is an ERROR log
