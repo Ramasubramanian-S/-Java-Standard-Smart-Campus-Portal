@@ -23,7 +23,6 @@ public class RegistrationController {
     @ResponseBody
     public String submitForm(@ModelAttribute Student student,
                              @RequestParam("photo") MultipartFile photo) {
-
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection conn = DriverManager.getConnection(
@@ -46,7 +45,6 @@ public class RegistrationController {
             conn.close();
 
             return "Registration Successful!";
-
         } catch (Exception e) {
             e.printStackTrace();
             return "Error: " + e.getMessage();
@@ -56,26 +54,44 @@ public class RegistrationController {
     @GetMapping("/students")
     public String viewAllStudents(Model model) {
         try {
-            
             Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            
             Connection conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:1521/XE", "system", "Pr@thmeshOracle");
 
-            
             StudentQueryService service = new StudentQueryService(conn);
             List<Student> students = service.getAllStudents();
 
             model.addAttribute("students", students);
-
             conn.close();
-            return "students"; 
 
+            return "students";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e.getMessage());
-            return "error"; 
-            }
+            return "error";
+        }
+    }
+
+    @GetMapping("/students/filter")
+    public String filterStudents(@RequestParam String department,
+                                 @RequestParam String year,
+                                 Model model) {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:1521/XE", "system", "Pr@thmeshOracle");
+
+            StudentQueryService service = new StudentQueryService(conn);
+            List<Student> students = service.getStudentsByFilter(department, year);
+
+            model.addAttribute("students", students);
+            conn.close();
+
+            return "students";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e.getMessage());
+            return "error";
+        }
     }
 }

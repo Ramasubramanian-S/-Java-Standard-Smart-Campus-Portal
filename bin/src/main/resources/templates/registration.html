@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body style="padding: 30px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
+
+<div class="container" style="max-width: 600px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 class="mb-4 text-center">Student Registration</h2>
+
+    <form th:action="@{/register}" method="post" th:object="${student}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Name <span style="color:red">*</span></label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Enter name">
+        </div>
+
+        <div class="form-group">
+            <label>Email <span style="color:red">*</span></label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+            <label>Password <span style="color:red">*</span></label>
+            <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number <span style="color:red">*</span></label>
+            <input type="tel" th:field="*{phone}" class="form-control" placeholder="Enter 10-digit phone">
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth <span style="color:red">*</span></label>
+            <input type="date" th:field="*{dob}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Gender <span style="color:red">*</span></label><br>
+            <div class="form-check form-check-inline">
+                <input type="radio" th:field="*{gender}" class="form-check-input" value="Male" id="genderMale">
+                <label class="form-check-label" for="genderMale">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" th:field="*{gender}" class="form-check-input" value="Female" id="genderFemale">
+                <label class="form-check-label" for="genderFemale">Female</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Department <span style="color:red">*</span></label>
+            <input type="text" th:field="*{department}" class="form-control" placeholder="Enter department">
+        </div>
+
+        <div class="form-group">
+            <label>Year of Study <span style="color:red">*</span></label>
+            <select th:field="*{year}" class="form-control">
+                <option value="">Select Year</option>
+                <option value="1st">1st Year</option>
+                <option value="2nd">2nd Year</option>
+                <option value="3rd">3rd Year</option>
+                <option value="4th">4th Year</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Upload Photo <span style="color:red">*</span></label>
+            <input type="file" name="photo" class="form-control" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label>Address <span style="color:red">*</span></label>
+            <textarea th:field="*{address}" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="reset" class="btn btn-secondary ml-2">Reset</button>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
