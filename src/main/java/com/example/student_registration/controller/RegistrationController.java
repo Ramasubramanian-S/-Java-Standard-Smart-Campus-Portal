@@ -1,11 +1,14 @@
 package com.example.student_registration.controller;
+
 import com.example.student_registration.model.Student;
+import com.example.student_registration.service.StudentQueryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.*;
+import java.util.List;
 
 @Controller
 public class RegistrationController {
@@ -48,5 +51,31 @@ public class RegistrationController {
             e.printStackTrace();
             return "Error: " + e.getMessage();
         }
+    }
+
+    @GetMapping("/students")
+    public String viewAllStudents(Model model) {
+        try {
+            
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:1521/XE", "system", "Pr@thmeshOracle");
+
+            
+            StudentQueryService service = new StudentQueryService(conn);
+            List<Student> students = service.getAllStudents();
+
+            model.addAttribute("students", students);
+
+            conn.close();
+            return "students"; 
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e.getMessage());
+            return "error"; 
+            }
     }
 }
