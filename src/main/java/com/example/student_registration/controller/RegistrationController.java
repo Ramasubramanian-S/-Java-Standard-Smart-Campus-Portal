@@ -26,7 +26,7 @@ public class RegistrationController {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521/XE", "system", "Pr@thmeshOracle");
+                    "jdbc:oracle:thin:@//localhost:1522/xepdb1", "system", "power");
 
             String sql = "INSERT INTO students (name, email, password, phone, dob, gender, department, year_of_study, address) " +
                     "VALUES (?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?, ?, ?)";
